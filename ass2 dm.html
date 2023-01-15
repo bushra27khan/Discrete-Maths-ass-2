@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warshall Algorithm</title>
+    <script>
+        window.onload = function() {
+            var txt1 = document.getElementById("txt1");
+        } //end onload
+
+        function run() {
+            txt1.value = "";
+            var MR = [
+                     [1,1,0,0,0],
+                     [0,1,1,0,0],
+                     [0,0,1,1,0],
+                     [0,0,0,1,1],
+                     [0,0,0,0,1]];
+            var W = MR;
+            var n = W.length;
+            for(var i=0;i<n;i++)
+                for(var j=0;j<n;j++)
+                    for(var k=0;k<n;k++) {
+                        W[i][j] = W[i][j] || (W[i][k] && W[k][j]);
+                    }//end for
+                txt1.value = W;
+            
+        }//end run
+    </script>
+</head>
+<body>
+    <h1>Warshall</h1>
+    <textarea id="txt1"></textarea>
+    <button id="btnRun" onclick="run()">run!</button>
+</body>
+</html>
